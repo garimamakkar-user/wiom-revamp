@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wiom — Affordable Internet for Every Indian Home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            wiom: { 50:'#FFE5F6', 100:'#FFCCED', 200:'#FFB2E4', 400:'#E84DB3', 500:'#D9008D', 600:'#B0006F', 700:'#870055', 800:'#5E003C', 900:'#3D0019' },
+            gold: { 50:'#FFFDE8', 100:'#FFF9C4', 200:'#FFF08A', 300:'#FED800', 400:'#E0C000', 500:'#B0A530', 600:'#8A8125' },
+            surface: { 50:'#FAFAFA', 100:'#F7F7F7', 200:'#F0F0F0', 300:'#E5E5E5' },
+          },
+          fontFamily: {
+            sans: ['Noto Sans', 'system-ui', 'sans-serif'],
+            display: ['DM Serif Display', 'Georgia', 'serif'],
+          },
+        }
+      }
+    };
+  </script>
+  <style>
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-up { animation: fadeUp 0.7s ease-out forwards; }
+    .fade-d1 { animation-delay: 0.1s; opacity: 0; }
+    .fade-d2 { animation-delay: 0.2s; opacity: 0; }
+    .fade-d3 { animation-delay: 0.3s; opacity: 0; }
+    .card-hover { transition: all 0.3s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -12px rgba(0,0,0,0.08); }
+    .nav-glass { background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+    .gradient-mesh { background: radial-gradient(ellipse at 20% 50%, rgba(217,0,141,0.04) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(254,216,0,0.06) 0%, transparent 50%); }
+    .gold-glow { box-shadow: 0 4px 20px rgba(254,216,0,0.35); }
+    .text-balance { text-wrap: balance; }
+  </style>
+</head>
+<body class="bg-white font-sans text-neutral-800 antialiased">
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="fixed top-0 left-0 right-0 z-50 nav-glass border-b border-neutral-100">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16">
+      <a href="index.html" class="flex items-center gap-2">
+        <svg viewBox="0 0 36 20" class="h-7" fill="none">
+          <path d="M10 10c0-3.3 2.7-6 6-6s6 2.2 8 6c-2 3.8-4.7 6-8 6s-6-2.7-6-6zm16 0c0-3.3 2.7-6 6-6s6 2.2 8 6c-2 3.8-4.7 6-8 6s-6-2.7-6-6z" stroke="#D9008D" stroke-width="2.5" stroke-linecap="round" transform="translate(-6,0) scale(0.85)"/>
+        </svg>
+        <span class="font-bold text-xl tracking-tight" style="color:#D9008D">wiom</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="index.html" class="text-neutral-900 text-sm font-medium">Home</a>
+        <a href="about.html" class="text-neutral-500 hover:text-neutral-900 text-sm font-medium transition">About</a>
+        <a href="careers.html" class="text-neutral-500 hover:text-neutral-900 text-sm font-medium transition">Careers</a>
+        <a href="#contact" class="text-neutral-500 hover:text-neutral-900 text-sm font-medium transition">Contact</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="careers.html" class="hidden sm:inline-flex items-center gap-2 bg-gold-300 hover:bg-gold-400 text-neutral-900 text-sm font-semibold px-5 py-2.5 rounded-full transition gold-glow">
+          We're Hiring
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <button onclick="document.getElementById('mob').classList.toggle('hidden')" class="md:hidden text-neutral-600">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mob" class="hidden md:hidden border-t border-neutral-100 px-6 py-4 space-y-3 bg-white">
+      <a href="index.html" class="block text-neutral-900 text-sm font-medium">Home</a>
+      <a href="about.html" class="block text-neutral-500 text-sm">About</a>
+      <a href="careers.html" class="block text-neutral-500 text-sm">Careers</a>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="relative min-h-screen flex items-center pt-16 gradient-mesh overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-28 w-full">
+      <div class="max-w-3xl">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 bg-wiom-50 border border-wiom-200 rounded-full px-4 py-1.5 mb-8 fade-up">
+          <span class="w-2 h-2 bg-wiom-500 rounded-full animate-pulse"></span>
+          <span class="text-wiom-600 text-xs font-semibold tracking-wide">Series B Funded</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-[3.75rem] font-display text-neutral-900 leading-[1.15] mb-3 fade-up fade-d1 text-balance">
+          Affordable internet for every Indian home.
+        </h1>
+        <p class="text-xl lg:text-2xl font-semibold mb-6 fade-up fade-d1" style="color:#D9008D">
+          Fulfilling 50 Crore Dreams
+        </p>
+
+        <p class="text-lg lg:text-xl text-neutral-500 leading-relaxed max-w-2xl mb-10 fade-up fade-d2">
+          Wiom is India's largest licensed PDOA under PM-WANI — enabling local entrepreneurs to deliver affordable broadband to every Indian household. Our infinity logo represents the world of unlimited possibilities we bring to every user.
+        </p>
+
+        <div class="flex flex-wrap gap-4 fade-up fade-d3">
+          <a href="#how-it-works" class="inline-flex items-center gap-2 bg-gold-300 hover:bg-gold-400 text-neutral-900 font-semibold px-7 py-3.5 rounded-full transition gold-glow">
+            See How It Works
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </a>
+          <a href="careers.html" class="inline-flex items-center gap-2 bg-white border border-neutral-200 hover:border-neutral-300 text-neutral-700 font-semibold px-7 py-3.5 rounded-full transition hover:shadow-sm">
+            Join Our Team
+          </a>
+        </div>
+      </div>
+
+      <!-- Bento Stats Grid (right side on desktop) -->
+      <div class="mt-16 lg:mt-0 lg:absolute lg:right-8 xl:right-16 lg:top-1/2 lg:-translate-y-1/2 lg:w-[340px]">
+        <div class="grid grid-cols-2 gap-3">
+          <div class="bg-white border border-neutral-200 rounded-2xl p-5 card-hover">
+            <div class="text-3xl font-extrabold text-wiom-500 mb-0.5">50 Cr</div>
+            <div class="text-neutral-400 text-xs font-medium">Dreams to fulfil</div>
+          </div>
+          <div class="bg-white border border-neutral-200 rounded-2xl p-5 card-hover">
+            <div class="text-3xl font-extrabold text-neutral-900 mb-0.5">PM-WANI</div>
+            <div class="text-neutral-400 text-xs font-medium">Licensed PDOA</div>
+          </div>
+          <div class="bg-white border border-neutral-200 rounded-2xl p-5 card-hover">
+            <div class="text-3xl font-extrabold text-neutral-900 mb-0.5">4.6<span class="text-base text-neutral-400">/5</span></div>
+            <div class="text-neutral-400 text-xs font-medium">Play Store rating</div>
+          </div>
+          <div class="rounded-2xl p-5 card-hover" style="background:#D9008D">
+            <div class="text-3xl font-extrabold text-white mb-0.5">23</div>
+            <div class="text-wiom-100 text-xs font-medium">NPS Score</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SOCIAL PROOF BAR ═══ -->
+  <section class="border-y border-neutral-100 py-8 bg-surface-50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-14">
+        <span class="text-neutral-300 text-[10px] font-bold tracking-[0.2em] uppercase">Backed by</span>
+        <div class="flex flex-wrap items-center justify-center gap-8 sm:gap-12">
+          <span class="text-neutral-400 font-semibold text-base">Accel</span>
+          <span class="text-neutral-400 font-semibold text-base">Prosus</span>
+          <span class="text-neutral-400 font-semibold text-base">BII</span>
+          <span class="text-neutral-400 font-semibold text-base">RTP Global</span>
+          <span class="text-neutral-400 font-semibold text-base">YourNest</span>
+          <span class="text-neutral-400 font-semibold text-base">Promaft</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ THE PROBLEM ═══ -->
+  <section class="py-24 lg:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center mb-16">
+        <span class="inline-block text-wiom-500 text-[10px] font-bold tracking-[0.2em] uppercase mb-4">The Problem</span>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display text-neutral-900 leading-tight mb-6 text-balance">
+          80 crore smartphones. Only 10 crore with broadband.
+        </h2>
+        <p class="text-lg text-neutral-400 leading-relaxed">
+          India has the second-largest internet population on earth. Yet affordable home broadband reaches barely 10 crore households.
+        </p>
+      </div>
+
+      <!-- Bento stats -->
+      <div class="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+        <div class="bg-neutral-900 rounded-2xl p-8 text-center card-hover">
+          <div class="text-5xl font-extrabold text-white mb-2">80Cr+</div>
+          <div class="text-neutral-400 text-sm">Smartphone users in India</div>
+        </div>
+        <div class="bg-surface-100 rounded-2xl p-8 text-center border border-neutral-200 card-hover">
+          <div class="text-5xl font-extrabold text-neutral-900 mb-2">~10Cr</div>
+          <div class="text-neutral-400 text-sm">Households with broadband</div>
+        </div>
+        <div class="bg-wiom-500 rounded-2xl p-8 text-center card-hover">
+          <div class="text-5xl font-extrabold text-white mb-2">70Cr</div>
+          <div class="text-wiom-100 text-sm">People still waiting</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ HOW IT WORKS ═══ -->
+  <section id="how-it-works" class="py-24 lg:py-32 bg-surface-50 border-y border-neutral-100">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center mb-16">
+        <span class="inline-block text-wiom-500 text-[10px] font-bold tracking-[0.2em] uppercase mb-4">The Wiom Ecosystem</span>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display text-neutral-900 leading-tight mb-6 text-balance">
+          Four stakeholders. One mission.
+        </h2>
+        <p class="text-lg text-neutral-400">Every connection Wiom makes involves real people — here's who they are.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Verma Parivar -->
+        <div class="bg-white rounded-2xl border border-neutral-200 overflow-hidden card-hover group">
+          <div class="h-1.5" style="background:#D9008D"></div>
+          <div class="p-8">
+            <div class="flex items-center gap-4 mb-5">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center text-white text-lg" style="background:#D9008D">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-neutral-900">Verma Parivar</h3>
+                <p class="text-xs text-neutral-400 uppercase tracking-wider font-semibold">The Customer</p>
+              </div>
+            </div>
+            <p class="text-neutral-500 text-sm leading-relaxed">For crores of Indian households who don't have home internet, Wiom is the most affordable solution. A family that streams, studies, and works from home — all on a flexible recharge that fits their monthly budget. No 3-month lock-ins. No hidden costs.</p>
+          </div>
+        </div>
+
+        <!-- Annu Bhaiya -->
+        <div class="bg-white rounded-2xl border border-neutral-200 overflow-hidden card-hover group">
+          <div class="h-1.5" style="background:#FED800"></div>
+          <div class="p-8">
+            <div class="flex items-center gap-4 mb-5">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center text-neutral-900 text-lg" style="background:#FED800">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-neutral-900">Annu Bhaiya</h3>
+                <p class="text-xs text-neutral-400 uppercase tracking-wider font-semibold">The Local Operator</p>
+              </div>
+            </div>
+            <p class="text-neutral-500 text-sm leading-relaxed">For lakhs of small cable operators and local ISPs who fear competition from big telecom players, Wiom is a lifeboat. They already have the wires and cables. Wiom gives them a platform to double their revenue without extra infrastructure investment — turning an existential threat into a growth opportunity.</p>
+          </div>
+        </div>
+
+        <!-- Rohit -->
+        <div class="bg-white rounded-2xl border border-neutral-200 overflow-hidden card-hover group">
+          <div class="h-1.5 bg-neutral-900"></div>
+          <div class="p-8">
+            <div class="flex items-center gap-4 mb-5">
+              <div class="w-12 h-12 rounded-xl bg-neutral-900 flex items-center justify-center text-white text-lg">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-neutral-900">Rohit</h3>
+                <p class="text-xs text-neutral-400 uppercase tracking-wider font-semibold">The Technician</p>
+              </div>
+            </div>
+            <p class="text-neutral-500 text-sm leading-relaxed">For the technicians who work under operators and have big dreams, Wiom is a mentor. They install, maintain, and troubleshoot connections on the ground. Wiom gives them dedicated tech tools, training, and a share of success — turning them from wire-pullers into empowered service partners.</p>
+          </div>
+        </div>
+
+        <!-- Wiom -->
+        <div class="rounded-2xl overflow-hidden card-hover group" style="background:#D9008D">
+          <div class="h-1.5 bg-white/30"></div>
+          <div class="p-8">
+            <div class="flex items-center gap-4 mb-5">
+              <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-lg">
+                <svg class="w-7 h-7" viewBox="0 0 40 24" fill="none"><path d="M2 12c4-8 10-10 18 0s14 8 18 0" stroke="#D9008D" stroke-width="3" stroke-linecap="round"/></svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-white">Wiom</h3>
+                <p class="text-xs text-white/60 uppercase tracking-wider font-semibold">The Platform</p>
+              </div>
+            </div>
+            <p class="text-white/80 text-sm leading-relaxed">The technology layer that stitches it all together. Wiom provides the patented platform, billing engine, compliance framework, and customer experience — connecting ISPs, operators, technicians, and households into one seamless ecosystem. Zero infrastructure owned. 50 crore lives to impact.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sachet pricing section removed -->
+
+  <!-- ═══ IMPACT ═══ -->
+  <section class="py-24 lg:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center mb-16">
+        <span class="inline-block text-wiom-500 text-[10px] font-bold tracking-[0.2em] uppercase mb-4">Impact</span>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display text-neutral-900 leading-tight mb-6 text-balance">
+          Creating Impact, One Connection at a Time!
+        </h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+        <div class="bg-surface-50 rounded-2xl p-7 border border-neutral-100 card-hover group">
+          <div class="w-10 h-10 bg-wiom-50 rounded-xl flex items-center justify-center mb-4 group-hover:bg-wiom-100 transition">
+            <svg class="w-5 h-5 text-wiom-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+          </div>
+          <h3 class="font-semibold text-neutral-900 mb-1.5">Students</h3>
+          <p class="text-neutral-400 text-sm leading-relaxed">Online classes, exam prep, and scholarship applications — now within reach.</p>
+        </div>
+        <div class="bg-surface-50 rounded-2xl p-7 border border-neutral-100 card-hover group">
+          <div class="w-10 h-10 bg-wiom-50 rounded-xl flex items-center justify-center mb-4 group-hover:bg-wiom-100 transition">
+            <svg class="w-5 h-5 text-wiom-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+          </div>
+          <h3 class="font-semibold text-neutral-900 mb-1.5">Small Businesses</h3>
+          <p class="text-neutral-400 text-sm leading-relaxed">Digital payments, inventory management, and online orders for local shops.</p>
+        </div>
+        <div class="bg-surface-50 rounded-2xl p-7 border border-neutral-100 card-hover group">
+          <div class="w-10 h-10 bg-wiom-50 rounded-xl flex items-center justify-center mb-4 group-hover:bg-wiom-100 transition">
+            <svg class="w-5 h-5 text-wiom-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          </div>
+          <h3 class="font-semibold text-neutral-900 mb-1.5">Rural Households</h3>
+          <p class="text-neutral-400 text-sm leading-relaxed">Government schemes, telemedicine, video calls — the basics everyone deserves.</p>
+        </div>
+        <div class="bg-surface-50 rounded-2xl p-7 border border-neutral-100 card-hover group">
+          <div class="w-10 h-10 bg-wiom-50 rounded-xl flex items-center justify-center mb-4 group-hover:bg-wiom-100 transition">
+            <svg class="w-5 h-5 text-wiom-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="font-semibold text-neutral-900 mb-1.5">Gig Workers</h3>
+          <p class="text-neutral-400 text-sm leading-relaxed">Delivery apps, job searches, and skill upgrades for India's gig workforce.</p>
+        </div>
+        <div class="bg-surface-50 rounded-2xl p-7 border border-neutral-100 card-hover group">
+          <div class="w-10 h-10 bg-wiom-50 rounded-xl flex items-center justify-center mb-4 group-hover:bg-wiom-100 transition">
+            <svg class="w-5 h-5 text-wiom-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          </div>
+          <h3 class="font-semibold text-neutral-900 mb-1.5">Senior Citizens</h3>
+          <p class="text-neutral-400 text-sm leading-relaxed">WhatsApp with family, UPI payments, and news — staying connected.</p>
+        </div>
+        <div class="bg-surface-50 rounded-2xl p-7 border border-neutral-100 card-hover group">
+          <div class="w-10 h-10 bg-wiom-50 rounded-xl flex items-center justify-center mb-4 group-hover:bg-wiom-100 transition">
+            <svg class="w-5 h-5 text-wiom-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="font-semibold text-neutral-900 mb-1.5">Local Entrepreneurs</h3>
+          <p class="text-neutral-400 text-sm leading-relaxed">Become a PDO operator and earn extra income — no heavy investment needed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section class="py-24 lg:py-32 relative overflow-hidden" style="background:#D9008D">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3"></div>
+    <div class="absolute bottom-0 left-0 w-72 h-72 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/4"></div>
+    <div class="relative max-w-3xl mx-auto px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display text-white leading-tight mb-6 text-balance">
+        50 crore lives impacted by 2030. That's the goal.
+      </h2>
+      <p class="text-xl text-white/70 mb-10">Come build it with us.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="careers.html" class="inline-flex items-center gap-2 bg-gold-300 hover:bg-gold-400 text-neutral-900 font-semibold px-8 py-4 rounded-full transition gold-glow">
+          View Open Roles
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <a href="about.html" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-4 rounded-full transition border border-white/20">
+          Our Story
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer id="contact" class="bg-neutral-900 pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid md:grid-cols-4 gap-10 mb-12">
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-2 mb-4">
+            <svg viewBox="0 0 36 20" class="h-7" fill="none">
+              <path d="M10 10c0-3.3 2.7-6 6-6s6 2.2 8 6c-2 3.8-4.7 6-8 6s-6-2.7-6-6zm16 0c0-3.3 2.7-6 6-6s6 2.2 8 6c-2 3.8-4.7 6-8 6s-6-2.7-6-6z" stroke="#D9008D" stroke-width="2.5" stroke-linecap="round" transform="translate(-6,0) scale(0.85)"/>
+            </svg>
+            <span class="text-white font-bold text-xl">wiom</span>
+          </div>
+          <p class="text-neutral-400 text-sm leading-relaxed max-w-sm mb-4">
+            India's largest licensed PDOA under PM-WANI. Impacting 50 crore lives by 2030.
+          </p>
+          <p class="text-neutral-600 text-xs">Omnia Information Private Limited</p>
+          <p class="text-neutral-600 text-xs">Ground Floor, Plot 94, Sector 32, Gurugram 122001</p>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold text-sm mb-4">Company</h4>
+          <div class="space-y-2.5">
+            <a href="about.html" class="block text-neutral-400 hover:text-white text-sm transition">About Us</a>
+            <a href="careers.html" class="block text-neutral-400 hover:text-white text-sm transition">Careers</a>
+            <a href="https://wiom.in/faq.html" class="block text-neutral-400 hover:text-white text-sm transition">FAQs</a>
+            <a href="https://wiom.in/privacyPolicy.html" class="block text-neutral-400 hover:text-white text-sm transition">Privacy Policy</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold text-sm mb-4">Connect</h4>
+          <div class="space-y-2.5">
+            <a href="mailto:talk2wiom@wiom.in" class="block text-neutral-400 hover:text-white text-sm transition">talk2wiom@wiom.in</a>
+            <a href="mailto:hr@wiom.in" class="block text-neutral-400 hover:text-white text-sm transition">hr@wiom.in</a>
+            <a href="tel:8880322222" class="block text-neutral-400 hover:text-white text-sm transition">8880-322-222</a>
+          </div>
+          <div class="flex items-center gap-4 mt-6">
+            <a href="https://www.linkedin.com/company/wiom/" class="text-neutral-500 hover:text-wiom-500 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+            <a href="https://twitter.com/Wiom_Official" class="text-neutral-500 hover:text-wiom-500 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="https://www.instagram.com/wiom_official/" class="text-neutral-500 hover:text-wiom-500 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-white/5 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-neutral-600 text-xs">&copy; 2026 Wiom (Omnia Information Pvt. Ltd.). All rights reserved.</p>
+        <p class="text-neutral-700 text-xs italic">Internet is a right, not a luxury.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

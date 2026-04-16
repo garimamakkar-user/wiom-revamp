@@ -1,0 +1,13 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "wiom-revamp",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["serve.cjs"],
+      "port": 4200,
+      "autoPort": true,
+      "cwd": "C:\\Users\\Garima Makkar\\Desktop\\wiom-revamp"
+    }
+  ]
+}

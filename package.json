@@ -1,0 +1,12 @@
+{
+  "name": "wiom-revamp",
+  "version": "1.0.0",
+  "description": "Wiom website revamp — talent brand & company pages",
+  "main": "serve.cjs",
+  "scripts": {
+    "start": "node serve.cjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
