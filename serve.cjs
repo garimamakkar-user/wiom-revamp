@@ -30,4 +30,4 @@ http.createServer((req, res) => {
     res.writeHead(200, { 'Content-Type': contentType });
     res.end(data);
   });
-}).listen(PORT, () => console.log(`Wiom Revamp preview: http://localhost:${PORT}`));
+}).listen(PORT, '0.0.0.0', () => console.log(`Wiom Revamp preview: http://0.0.0.0:${PORT}`));
